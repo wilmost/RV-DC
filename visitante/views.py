@@ -95,7 +95,6 @@ def listado_visistas_view(request, *args, **kwargs):
                 'Celular',
                 'Motivo de la visita', 
                 'Hora de entrada',
-                'Hora de Salida',
                 'Fecha' ]
    
     context_ = {

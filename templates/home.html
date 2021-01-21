@@ -12,20 +12,20 @@
  <!-- <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>. The top navbar is optional, and just for demonstration. Just create an element with the <code>#menu-toggle</code> ID which will toggle the menu when clicked.</p> -->
 </div> 
 <div class="container-fluid" id = 'content-main'> 
-  <h4 class="class=display-3 text-center">Visitas agendadas para hoy</h4>
+  <h4 class="font-weight-bolder" >Visitas agendadas para hoy</h4>
   <hr>
   <div class="accordion" id="accordionExample">
     {% for elements in object_list %}
       <div class="card">
         <div class="card-header " id="headingOne">
           <h2 class="mb-0">
-            <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-              {{elements.institucion }} , {{elements.hora }} 
+            <button class="btn btn-link btn-block text-left text-decoration-none " type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              {{elements.institucion |upper}} {{elements.hora }} 
           </h2>
         </div>
 
-        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-          <div class="card-body">
+        <div  id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+          <div class="card-body ">
             <dl class="row">
               <dt class="col-sm-3">Nombre: </dt>
               <dd class="col-sm-9">{{elements.nombre}}</dd> 

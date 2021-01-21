@@ -1,0 +1,33 @@
+{%extends 'base.html'%} 
+
+{%block content %}
+
+<div class = "container">
+
+    <div> 
+        <h2 class="mt-4">Formulario de Registro</h2>
+    </div>
+    
+    <div id= 'form' class="form-group">
+        <!-- <form method = POST> {% csrf_token %} -->
+        <form method = 'POST'> {% csrf_token %} 
+            <div class="form-group">
+
+            {{ form.as_p}} <!--.as_p -->
+            <!-- <input type="text" name= 'title' placeholder="Your title"/> -->
+          
+            </div>
+            
+            <div >
+            <button class="btn btn-primary btn-sm" type="submit">Enviar</button>
+            </div>
+
+        </form>
+
+    </div>
+    
+   
+    
+
+</div>
+{% endblock  %}

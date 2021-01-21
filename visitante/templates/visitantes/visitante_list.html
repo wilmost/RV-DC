@@ -2,10 +2,10 @@
 
 {%block content %}
 
-<div id= 'content-main'>
+<div class = 'article-content'>
 
-    <div class="bg-light border-right">
-        <a class="btn btn-link" href ="{%url 'visita-create' %}">Agendar</a>
+    <div class="bg-primary">
+         <a class="btn btn-link" href ="{%url 'visita-create' %}" ><i class="bi bi-plus-square">  Agendar</i></a>
        
     </div>
     <div class= 'table-responsive'>
@@ -15,6 +15,7 @@
             <tr>
                 <th scope="col">Id</th>
                 <th scope="col">Institucion</th>
+                <th scope="col">Visitante</th>
                 <th scope="col">Fecha</th>
                 <th scope="col">Hora</th>
                 <th scope="col">Motivo</th>
@@ -25,6 +26,7 @@
                 <tr>
                     <th scope = 'row'><a class="mr-2" href="{% url 'visita-detail' visitas.id %}">{{ visitas.id }}</a></th>
                     <td>{{visitas.institucion}}</td>
+                    <td>{{visitas.nombre}} {{visitas.apellido}}</td>
                     <td>{{visitas.fecha}}</td>
                     <td>{{visitas.hora}}</td>
                     <td>{{visitas.motivo}}</td>

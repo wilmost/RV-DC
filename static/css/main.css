@@ -2,7 +2,27 @@ body {
     background: #fafafa;
     color: #333333;
     margin-top: 5rem;
+    
   }
+
+.site-header .navbar-nav .nav-link {
+    color: #cbd5db;
+  }
+  
+.add-new_visit  {
+    background-color: #4bd10d;
+  }
+
+.site-header .navbar-nav .nav-link.active {
+    font-weight: 500;
+  }
+  
+.bi-plus-square{
+    font-size: 1.2rem; 
+    color: rgb(247, 247, 248);
+}
+
+
 
 .content-section {
     background: #ffffff;
@@ -12,6 +32,9 @@ body {
     margin-bottom: 20px;
   }
 
+.bg-steel {
+    background-color: #5f788a;
+  }
 
 h1, h2, h3, h4, h5, h6 {
     color: #444444;

@@ -6,6 +6,10 @@ body {
     
   }
 
+td {
+  white-space: nowrap;
+  /*height: 20%; */
+}
 .site-header .navbar-nav .nav-link {
     color: #cbd5db;
   }
@@ -40,9 +44,7 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
     color: #444444;
-<<<<<<< HEAD
 
-=======
 }
 
 .content-heading {
@@ -51,4 +53,3 @@ h1, h2, h3, h4, h5, h6 {
 
 
 }
->>>>>>> 019d915097a40ec1fd429989d0db436479dab81a

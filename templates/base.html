@@ -59,17 +59,24 @@
               <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Iniciar sesion</a>
-            </li>
-            <li class="nav-item">
               <a class="nav-link" href="/visitante_list">Visitas</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/reportes">Reportes</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Salir</a>
-            </li>
+            {% if user.is_authenticated  %}
+              <li class="nav-item"></li>
+                <a class="nav-link" href="{% url 'logout' %}">Salir</a>
+              </li>
+            {% else %}
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'login' %}">Iniciar sesion</a>
+                </li>
+            {% endif %}
+
+            
+              
+            
             <!-- <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">

@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from visitante.models import Visitante
 import datetime
 from django.utils import timezone

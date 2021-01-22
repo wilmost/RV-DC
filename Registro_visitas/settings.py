@@ -27,7 +27,7 @@ SECRET_KEY = '(s%i2fj%8u-#o0eryls)l5hcwwe85ytq-1&%b29f+7&a%jtca5'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['18.207.125.123']
+ALLOWED_HOSTS = ['18.207.125.123', '127.0.0.1']
 
 
 # Application definition
@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'visitante',
     'pages',
+    'users',#'users.app.UsersConfig',
     
     
 ]
@@ -129,3 +130,4 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+LOGIN_REDIRECT_URL = '/'

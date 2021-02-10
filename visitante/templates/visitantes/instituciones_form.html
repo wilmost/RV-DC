@@ -7,10 +7,9 @@
         <form method="POST">
             {% csrf_token %}
             <fieldset class="form-group">
-                <legend class="border-bottom mb-4"><h3>Formulario de Registro</h3></legend>
-               
+                <legend class="border-bottom mb-4"><h3>Registrar Institucion / Proveedor</h3></legend>
                 {{ form|crispy }} 
-               
+    
             </fieldset> 
             <div class="form-group">
                 <button class="btn btn-outline-info" type="submit">Guardar</button>

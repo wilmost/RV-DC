@@ -16,6 +16,9 @@ class Instituciones(models.Model):
     email_autorizador   =models.EmailField(max_length = 100)
     Tel_autorizador     =models.CharField(max_length = 10) 
 
+    def get_absolute_url(self):
+        return reverse('visita-create')
+
     def __str__(self):
         return self.nombre 
 
@@ -37,6 +40,9 @@ class Visitante(models.Model):
     hora_entrada        = models.TimeField(blank=True,  null=True)
     hora_salida         = models.TimeField(blank=True,  null=True) 
     duracion            = models.CharField(blank=True, max_length = 10)
+
+    class Meta:
+        ordering = ["fecha"]
 
 
     def get_absolute_url(self):

@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
-from django.contrib.auth.views import login_required, logout_then_login
+from django.contrib.auth.decorators import login_required
 from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
 from pages.views import home_view 
@@ -27,23 +27,25 @@ from visitante.views import (
      VisitasDetailView,
      VisitasCreateView,
      VisitasUpdateView,
-     VisitasDeleteView
+     VisitasDeleteView,
+     InstitucionesCreateView
 
     ) 
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('home/', home_view, name ='vista-home'), 
+    path('home/', login_required(home_view), name ='vista-home'), 
     path('', auth_views.LoginView.as_view(template_name= 'users/login.html'), name = 'login'),
     path('logout/', auth_views.LogoutView.as_view(template_name= 'users/logout.html'), name = 'logout'),
     # path('visitante/', registrar_visitante_view), 
-    path('reportes/', listado_visistas_view), 
-    path('visitante_list/', VisitasListView.as_view(), name = 'visita-lista'),
-    path('visita/<int:pk>/', VisitasDetailView.as_view(), name='visita-detail'),
-    path('visita/new/', VisitasCreateView.as_view(), name='visita-create'),
-    path('visita/<int:pk>/update/', VisitasUpdateView.as_view(), name='visita-update'),
-    path('visita/<int:pk>/delete/', VisitasDeleteView.as_view(), name='visita-delete'),
+    path('reportes/', login_required (listado_visistas_view)), 
+    path('visitante_list/', login_required(VisitasListView.as_view()), name = 'visita-lista'),
+    path('visita/<int:pk>/',login_required(VisitasDetailView.as_view()), name='visita-detail'),
+    path('visita/new/',login_required(VisitasCreateView.as_view()), name='visita-create'),
+    path('institucion/new',login_required(InstitucionesCreateView.as_view()), name= 'institucion-create' ),
+    path('visita/<int:pk>/update/', login_required(VisitasUpdateView.as_view()), name='visita-update'),
+    path('visita/<int:pk>/delete/',login_required(VisitasDeleteView.as_view()), name='visita-delete'),
     # path('', login_required, {'template_name': 'login.html'})
     # path('' ,include ('Registro_visitas.urls')),
 ]

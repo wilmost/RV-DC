@@ -18,6 +18,11 @@ class VisitasDetailView(DetailView):
     template_name = 'visitantes/visitante_detail.html' 
 
 
+class InstitucionesCreateView(CreateView):
+    model = Instituciones
+    field = fields = ['nombre', 'tipo', 'autorizador','email_autorizador','Tel_autorizador' ]
+    template_name = 'visitantes/instituciones_form.html'
+    
 
 
 class VisitasCreateView(CreateView): 

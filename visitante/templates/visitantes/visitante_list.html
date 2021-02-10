@@ -6,7 +6,7 @@
 
 <div class = 'article-content'>
     
-    <div class="bg-primary">
+    <div class="bg-success">
          <a class=" btn text-decoration-none font-weight-normal" href ="{%url 'visita-create' %}" ><i class="bi bi-plus-square">  Agendar</i></a>
        
     </div>
@@ -29,12 +29,14 @@
             <tbody>
                 {% for visitas in object_list  %} 
                 <tr>
-                    <th scope = 'row'><a class="mr-2" href="{% url 'visita-detail' visitas.id %}">{{ visitas.id }}</a></th>
-                    <td>{{visitas.institucion}}</td>
+                    <th scope = 'row'>{{ visitas.id }}</th>
+                    <td><a class="mr-2" href="{% url 'visita-detail' visitas.id %}">{{visitas.institucion}}</a></td>
                     <td>{{visitas.nombre}} {{visitas.apellido}}</td>
                     <td>{{visitas.fecha}}</td>
                     <td>{{visitas.hora}}</td>
                     <td>{{visitas.motivo}}</td>
+                    <td><a class="btn btn-outline-primary" href ="{%url 'visita-update' visitas.id %}"><i class="bi bi-pencil-square"></i></a></td>
+                    <td><a class="btn btn-outline-danger" href ="{%url 'visita-delete' visitas.id %}"><i class="bi bi-trash"></i></a></td>
                     
                 </tr>
                     

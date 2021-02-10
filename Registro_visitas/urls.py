@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
+from django.contrib.auth.views import login_required, logout_then_login
 from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
 from pages.views import home_view 
@@ -33,8 +34,8 @@ from visitante.views import (
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', home_view, name ='vista-home'), 
-    path('login/', auth_views.LoginView.as_view(template_name= 'users/login.html'), name = 'login'),
+    path('home/', home_view, name ='vista-home'), 
+    path('', auth_views.LoginView.as_view(template_name= 'users/login.html'), name = 'login'),
     path('logout/', auth_views.LogoutView.as_view(template_name= 'users/logout.html'), name = 'logout'),
     # path('visitante/', registrar_visitante_view), 
     path('reportes/', listado_visistas_view), 
@@ -43,5 +44,6 @@ urlpatterns = [
     path('visita/new/', VisitasCreateView.as_view(), name='visita-create'),
     path('visita/<int:pk>/update/', VisitasUpdateView.as_view(), name='visita-update'),
     path('visita/<int:pk>/delete/', VisitasDeleteView.as_view(), name='visita-delete'),
+    # path('', login_required, {'template_name': 'login.html'})
     # path('' ,include ('Registro_visitas.urls')),
 ]

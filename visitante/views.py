@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Visitante, Instituciones
+from .models import Visitante, Instituciones, Acompanante
 from .forms import registrar_visitante
 import datetime 
 from django.views.generic import (
@@ -22,6 +22,13 @@ class InstitucionesCreateView(CreateView):
     model = Instituciones
     field = fields = ['nombre', 'tipo', 'autorizador','email_autorizador','Tel_autorizador' ]
     template_name = 'visitantes/instituciones_form.html'
+
+
+
+class AcompananteCreateView(CreateView): 
+    model = Acompanante
+    field = fields =['nombre', 'apellido', 'cedula', 'posicion', 'celular', 'visita' ] 
+    template_name = 'visitantes/acompanante_form.html'
     
 
 
@@ -38,7 +45,8 @@ class VisitasCreateView(CreateView):
                 'celular',
                 'motivo', 
                 'hora',
-                'fecha'
+                'fecha',
+                'firma_entrada'
     ] 
     template_name = 'visitantes/visitante_form.html'  
 

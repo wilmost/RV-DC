@@ -28,7 +28,8 @@ from visitante.views import (
      VisitasCreateView,
      VisitasUpdateView,
      VisitasDeleteView,
-     InstitucionesCreateView
+     InstitucionesCreateView,
+     AcompananteCreateView
 
     ) 
 
@@ -44,8 +45,12 @@ urlpatterns = [
     path('visita/<int:pk>/',login_required(VisitasDetailView.as_view()), name='visita-detail'),
     path('visita/new/',login_required(VisitasCreateView.as_view()), name='visita-create'),
     path('institucion/new',login_required(InstitucionesCreateView.as_view()), name= 'institucion-create' ),
+    path('acompanante/<int:pk>/new',login_required(AcompananteCreateView.as_view()), name= 'acompanante-create' ),
     path('visita/<int:pk>/update/', login_required(VisitasUpdateView.as_view()), name='visita-update'),
     path('visita/<int:pk>/delete/',login_required(VisitasDeleteView.as_view()), name='visita-delete'),
+    path('pdf/', include('pages.urls', namespace = 'pages')),
     # path('', login_required, {'template_name': 'login.html'})
     # path('' ,include ('Registro_visitas.urls')),
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root= settings.MEDIA_ROOT)

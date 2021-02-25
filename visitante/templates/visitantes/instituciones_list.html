@@ -1,0 +1,56 @@
+{%extends 'base.html'%} 
+
+{%block content %}
+
+
+
+
+<div class = 'article-content'>
+    
+    <div class="bg-success">
+         <a class=" btn text-decoration-none font-weight-normal" href ="{%url 'institucion-create' %}" ><i class="bi bi-plus-square"> Agregar Nuevo</i></a>
+       
+    </div>
+    <hr>
+    <h3>Listado de Instituciones y Proveedores </h3>
+    <hr>
+    <div class= 'table-responsive'>
+
+        <table class="table table-borderless table table-hover">
+            <thead>
+            <tr>
+                
+                <th scope="col">Nombre</th>
+                <th scope="col">Tipo</th>
+                <th scope="col">Autorizador</th>
+                <th scope="col">Email</th>
+                <th scope="col">Celular</th>
+            </tr>
+            </thead>
+            <tbody>
+                {% for element in object_list  %} 
+                <tr>
+                    
+                    <td>{{element.nombre}}</td>
+                    <td>{{element.tipo}}</td>
+                    <td>{{element.autorizador}}</td>
+                    <td>{{element.email_autorizador}}</td>
+                    <td>{{element.Tel_autorizador}}</td>
+                    <!-- <td><a class="btn btn-outline-primary" href ="#"><i class="bi bi-pencil-square"></i></a></td> -->
+                    <!-- <td><a class="btn btn-outline-danger" href ="#"><i class="bi bi-trash"></i></a></td> -->
+                    
+                </tr>
+                    
+                    
+
+                {% endfor %}
+ 
+            </tbody>   
+        </table>  
+    </div>    
+</div>
+
+
+
+
+{%endblock %} 

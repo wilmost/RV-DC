@@ -21,10 +21,8 @@
           <dt class="col-sm-3">Cedula: </dt>
           <dd class="col-sm-9">{{object.cedula}}</dd> 
         </dl>
-        <dl class="row">
-          <dt class="col-sm-3">Institucion: </dt>
-          <dd class="col-sm-9">{{object.institucion}}</dd>  
-        </dl> 
+        
+        
         <dl class="row">
           <dt class="col-sm-3">Posicion: </dt>
           <dd class="col-sm-9">{{object.posicion}}</dd> 
@@ -33,6 +31,12 @@
           <dt class="col-sm-3">Email: </dt>
           <dd class="col-sm-9">{{object.email}}</dd> 
         </dl>
+        
+
+        <dl class="row">
+          <dt class="col-sm-3">Institucion: </dt>
+          <dd class="col-sm-9">{{object.institucion}}</dd>  
+        </dl> 
         <dl class="row">
           <dt class="col-sm-3">Motivo de la visita: </dt>
           <dd class="col-sm-9">{{object.motivo}}</dd> 
@@ -43,12 +47,18 @@
         </dl>
         <dl class="row">
           <dt class="col-sm-3">Fecha: </dt>
-          <dd class="col-sm-9">{{object.fecha}}</dd> 
+          <dd class="col-sm-9">{{object.fecha}}</dd>
+        </dl>
+       
+          
+          
+        
         
         <div>
-          <hr>
+          
             <a class="btn btn-outline-secondary" href ="{%url 'visita-lista' %}"><i class="bi bi-arrow-return-left"></i></a>
-            <a class="btn btn-outline-primary" href ="{%url 'visita-update' object.id %}">Modificar</a>
+            <a class="btn btn-outline-primary" href ="{%url 'visita-update' object.id %}">Modificar</a> 
+            <a class="btn btn-outline-primary" href ="{%url 'acompanante-create' object.id %}">add Acompañante</a>
 
         </div>
     

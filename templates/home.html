@@ -16,69 +16,73 @@
   <hr>
   <div class="accordion" id="accordionExample">
     {% for elements in object_list %}
-      <div class="card">
-        <div class="card-header " id="headingOne">
-          <h2 class="mb-0">
-            <button class="btn btn-link btn-block text-left text-decoration-none " type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-              {{elements.institucion |upper}} {{elements.hora }} 
-          </h2>
-        </div>
+        <div class="card">
+          <div class="card-header " id="headingOne">
+            <h2 class="mb-0">
+              <button class="btn btn-link btn-block text-left text-decoration-none " type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                {{elements.institucion |upper}} {{elements.hora }} 
+            </h2>
+          </div>
 
-        <div  id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-          <div class="card-body ">
-            <dl class="row">
-              <dt class="col-sm-3">Nombre: </dt>
-              <dd class="col-sm-9">{{elements.nombre}}</dd> 
-            </dl>
-            <dl class="row">
-              <dt class="col-sm-3">Apellido: </dt>
-              <dd class="col-sm-9">{{elements.apellido}}</dd> 
-            </dl>
-            <dl class="row">
-              <dt class="col-sm-3">Cedula: </dt>
-              <dd class="col-sm-9">{{elements.cedula}}</dd> 
-            </dl>
-            <dl class="row">
-              <dt class="col-sm-3">Institucion: </dt>
-              <dd class="col-sm-9">{{elements.institucion}}</dd>  
-            </dl> 
-            <dl class="row">
-              <dt class="col-sm-3">Posicion: </dt>
-              <dd class="col-sm-9">{{elements.posicion}}</dd> 
-            </dl> 
-            <dl class="row">
-              <dt class="col-sm-3">Email: </dt>
-              <dd class="col-sm-9">{{elements.email}}</dd> 
-            </dl>
-            <dl class="row">
-              <dt class="col-sm-3">Motivo de la visita: </dt>
-              <dd class="col-sm-9">{{elements.motivo}}</dd> 
-            </dl>
-            <dl class="row">
-              <dt class="col-sm-3">Hora: </dt>
-              <dd class="col-sm-9">{{elements.hora}}</dd> 
-            </dl>
-            <dl class="row">
-              <dt class="col-sm-3">Fecha: </dt>
-              <dd class="col-sm-9">{{elements.fecha}}</dd> 
-            </dl> 
-            <form method="POST">
-            {% csrf_token %}
-              <div class="form-group">
-                <input class="btn btn-primary" type="submit" name=regis_in value="Registrar entrada"/>
-                <input class="btn btn-primary" type="submit" name=regis_out value="Registrar Salida"/>
-                <!-- <button class="btn btn-outline-success" type="submit">Registrar Entrada</button> -->
-              </div>
-            </form>
+          <div  id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+            <div class="card-body ">
+              <dl class="row">
+                <dt class="col-sm-3">Nombre: </dt>
+                <dd class="col-sm-9">{{elements.nombre}}</dd> 
+              </dl>
+              <dl class="row">
+                <dt class="col-sm-3">Apellido: </dt>
+                <dd class="col-sm-9">{{elements.apellido}}</dd> 
+              </dl>
+              <dl class="row">
+                <dt class="col-sm-3">Cedula: </dt>
+                <dd class="col-sm-9">{{elements.cedula}}</dd> 
+              </dl>
+              <dl class="row">
+                <dt class="col-sm-3">Institucion: </dt>
+                <dd class="col-sm-9">{{elements.institucion}}</dd>  
+              </dl> 
+              <dl class="row">
+                <dt class="col-sm-3">Posicion: </dt>
+                <dd class="col-sm-9">{{elements.posicion}}</dd> 
+              </dl> 
+              <dl class="row">
+                <dt class="col-sm-3">Email: </dt>
+                <dd class="col-sm-9">{{elements.email}}</dd> 
+              </dl>
+              <dl class="row">
+                <dt class="col-sm-3">Motivo de la visita: </dt>
+                <dd class="col-sm-9">{{elements.motivo}}</dd> 
+              </dl>
+              <dl class="row">
+                <dt class="col-sm-3">Hora: </dt>
+                <dd class="col-sm-9">{{elements.hora}}</dd> 
+              </dl>
+              <dl class="row">
+                <dt class="col-sm-3">Fecha: </dt>
+                <dd class="col-sm-9">{{elements.fecha}}</dd> 
+              </dl> 
+              
+              {% if elements.firma_entrada == Null  %}
+                  <!-- <input class="btn btn-primary" type="submit" name=regis_in value="Registrar entrada"/> -->
+                  <a class="btn btn-primary" href ="{%url 'visita-update' elements.id %}">Registrar entrada</a>
+                  
+              {% elif elements.firma_salida == Null %}
+                  <a class="btn btn-primary" href ="{%url 'visita-update' elements.id %}">Registrar Salida</a>
+                  <!-- <input class="btn btn-primary" type="submit" name=regis_out value="Registrar Salida"/> -->
+                  <!-- <button class="btn btn-outline-success" type="submit">Registrar Entrada</button> -->
+              
+              {% endif %} 
+            </div>
 
+            
             <!-- <input class="btn btn-primary" type="submit" name=regis_in value="Registrar entrada">
             <input class="btn btn-primary" type="submit" name=regis_out value="Registrar Salida"> -->
-
           </div>
         </div>    
       </div>
-    
-      {%endfor%}
+    {%endfor%}
   </div>
 </div>
 {% endblock %}
+

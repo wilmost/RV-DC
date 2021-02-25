@@ -29,6 +29,7 @@ from visitante.views import (
      VisitasUpdateView,
      VisitasDeleteView,
      InstitucionesCreateView,
+     InstitucionesListView,
      AcompananteCreateView
 
     ) 
@@ -45,6 +46,7 @@ urlpatterns = [
     path('visita/<int:pk>/',login_required(VisitasDetailView.as_view()), name='visita-detail'),
     path('visita/new/',login_required(VisitasCreateView.as_view()), name='visita-create'),
     path('institucion/new',login_required(InstitucionesCreateView.as_view()), name= 'institucion-create' ),
+    path('instituciones_list/', login_required(InstitucionesListView.as_view()), name = 'institucion-lista'),
     path('acompanante/<int:pk>/new',login_required(AcompananteCreateView.as_view()), name= 'acompanante-create' ),
     path('visita/<int:pk>/update/', login_required(VisitasUpdateView.as_view()), name='visita-update'),
     path('visita/<int:pk>/delete/',login_required(VisitasDeleteView.as_view()), name='visita-delete'),

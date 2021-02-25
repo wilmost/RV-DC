@@ -2,9 +2,15 @@
 {% load crispy_forms_tags %}
 {% load jsignature_filters %}
 
+
+{% block extra_media %}
+  {{ form.media }}
+{% endblock %}
+
 {%block content %} 
 <div >
     <div class="content-section">
+        {{ form.media }}
         <form method="POST">
             {% csrf_token %}
             <fieldset class="form-group">

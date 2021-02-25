@@ -3,6 +3,7 @@ from django.utils import timezone
 from django.urls import reverse
 from jsignature.fields import JSignatureField
 
+
 # Create your models here.
 
 
@@ -17,8 +18,11 @@ class Instituciones(models.Model):
     email_autorizador   =models.EmailField(max_length = 100)
     Tel_autorizador     =models.CharField(max_length = 10) 
 
+    class Meta:
+        ordering = ["tipo"]
+
     def get_absolute_url(self):
-        return reverse('visita-create')
+        return reverse('institucion-lista')
 
     def __str__(self):
         return self.nombre 
@@ -61,15 +65,17 @@ class Visitante(models.Model):
 class Acompanante(models.Model):
     nombre              = models.CharField(max_length = 50)
     apellido            = models.CharField(max_length = 50)
-    cedula              = models.CharField(max_length = 50)
+    cedula              = models.CharField(max_length = 11)
     posicion            = models.CharField(max_length = 50)
     celular             = models.CharField(max_length = 10)
-    visita              = models.ForeignKey(Visitante,  on_delete=models.CASCADE )         
+    visita              = models.ForeignKey(Visitante,  on_delete=models.CASCADE )  
+    firma_entrada       = JSignatureField(blank = True, null = True)  
+    firma_salida        = JSignatureField(blank = True, null = True)        
 
     # def get_absolute_url(self):
     #     return reverse('acompanate-create', kwargs={'pk': self.pk})
     def get_absolute_url(self):
-        return reverse('visita-detail',kwargs={'pk': self.pk}) 
+        return reverse('visita-lista') 
 
     def __str__(self):
         return str(self.nombre) + " " + str(self.apellido)

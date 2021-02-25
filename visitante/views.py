@@ -6,30 +6,47 @@ from django.views.generic import (
     ListView, DetailView, CreateView, UpdateView, DeleteView
 )
 
-# Create your views here.
+# Create your views here. 
+
+
+    
+   
+# Instituciones list of Views
+class InstitucionesCreateView(CreateView):
+    model = Instituciones
+    field = fields = ['nombre', 'tipo', 'autorizador','email_autorizador','Tel_autorizador' ]
+    template_name = 'visitantes/instituciones_form.html' 
+
+class InstitucionesListView(ListView): 
+    model = Instituciones
+    template_name = 'visitantes/instituciones_list.html'
+
+
+# Acompantes list of Views
+class AcompananteCreateView(CreateView): 
+    model = Acompanante
+    field = fields =['nombre', 'apellido', 'cedula', 'posicion', 'celular', 'visita' ] 
+    template_name = 'visitantes/acompanante_form.html' 
+
+
+class AcompananteUpdateView(UpdateView): 
+    model = Acompanante
+    template_name = 'visitantes/visitante_detail.html' 
+    
+
+
+
+# Visitantes list of Views
 
 class VisitasListView(ListView): 
     model = Visitante
     template_name = 'visitantes/visitante_list.html'
     #ordering = ['fecha']
 
+
 class VisitasDetailView(DetailView): 
     model = Visitante 
     template_name = 'visitantes/visitante_detail.html' 
-
-
-class InstitucionesCreateView(CreateView):
-    model = Instituciones
-    field = fields = ['nombre', 'tipo', 'autorizador','email_autorizador','Tel_autorizador' ]
-    template_name = 'visitantes/instituciones_form.html'
-
-
-
-class AcompananteCreateView(CreateView): 
-    model = Acompanante
-    field = fields =['nombre', 'apellido', 'cedula', 'posicion', 'celular', 'visita' ] 
-    template_name = 'visitantes/acompanante_form.html'
-    
 
 
 class VisitasCreateView(CreateView): 
@@ -46,7 +63,7 @@ class VisitasCreateView(CreateView):
                 'motivo', 
                 'hora',
                 'fecha',
-                'firma_entrada'
+                
     ] 
     template_name = 'visitantes/visitante_form.html'  
 
@@ -63,7 +80,9 @@ class VisitasUpdateView(UpdateView):
                 'celular',
                 'motivo', 
                 'hora',
-                'fecha'
+                'fecha',
+                'firma_entrada',
+                'firma_salida'
     
     ]   
     template_name = 'visitantes/visitante_form.html' 
